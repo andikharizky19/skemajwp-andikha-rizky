@@ -13,8 +13,22 @@ if (!isset($_SESSION['tasks'])) {
 if (isset($_POST['tambah'])) {
     $judul = trim($_POST['judul']);
     if ($judul !== '') {
+        // Pastikan session array ada
+        if (!isset($_SESSION['tasks'])) {
+            $_SESSION['tasks'] = [];
+        }
+
+        // Cari ID tertinggi yang sudah ada
+        $maxId = 0;
+        foreach ($_SESSION['tasks'] as $task) {
+            if (isset($task['id']) && $task['id'] > $maxId) {
+                $maxId = $task['id'];
+            }
+        }
+
+        // Tambahkan tugas baru dengan ID unik
         $_SESSION['tasks'][] = [
-            "id" => count($_SESSION['tasks']) + 1,
+            "id" => $maxId + 1,
             "title" => $judul,
             "status" => "belum"
         ];
@@ -22,6 +36,7 @@ if (isset($_POST['tambah'])) {
     header("Location: index.php");
     exit;
 }
+
 
 // 3. Update Tugas
 if (isset($_POST['ubah'])) {

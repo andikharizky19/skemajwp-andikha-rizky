@@ -17,7 +17,7 @@ todolist/
 - Struktur modular dan rapi
 - Menggunakan Bootstrap 5
 
-## 🔧 Cara Menjalankan
+## Cara Menjalankan
 
 1. **Install XAMPP** (jika belum punya)
 2. Simpan seluruh file dalam folder `htdocs/todolist`
@@ -56,3 +56,4 @@ todolist/
 ## Pengembang
 
 Andikha Rizky 
+
